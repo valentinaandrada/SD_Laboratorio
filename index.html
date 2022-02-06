@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Alta Telefónica</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <form id="form" autocomplete="off">
+      <h1>Formulario Información Alta Telefónica</h1>
+      <fieldset>
+        <legend>Datos Personales</legend>
+        <br />
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" maxlength="30" required /><br /><br />
+        <label for="apellidos">Apellidos:</label>
+        <input
+          type="text"
+          name="apellidos"
+          maxlength="60"
+          required
+        /><br /><br />
+        <label for="direccion">Dirección:</label>
+        <input
+          type="text"
+          name="direccion"
+          maxlength="60"
+          required
+        /><br /><br />
+        <label for="codigopostal">Código Postal:</label>
+        <input
+          type="text"
+          name="codigopostal"
+          value=""
+          pattern="[0-9]{5}"
+          maxlength="5"
+          id="cp"
+        />
+        <br /><br />
+        <label for="provincia">Provincia:</label>
+        <input type="text" name="provincia" id="provincia" />
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>Tipo de Contratación</legend>
+        <br />
+        <input type="radio" name="tipo" value="1" checked />Nueva Contratación
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="tipo" value="2" />Portabilidad
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="tipo" value="3" />Cambio de Contrato
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <br />
+
+        Seleccione su compañía actual:
+        <select name="compañiaactual">
+          <option value="Movistar">Movistar</option>
+          <option value="Orange">Orange</option>
+          <option value="Vodafone">Vodafone</option>
+          <option value="Yoigo">Yoigo</option>
+          <option value="Ninguna">No tengo Ninguna Compañía</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; En caso de portabilidad, elija la
+        nueva compañía:
+        <select name="portabilidad">
+          <option value="Movistar">Movistar</option>
+          <option value="Orange">Orange</option>
+          <option value="Vodafone">Vodafone</option>
+          <option value="Yoigo">Yoigo</option></select
+        ><br /><br />
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>Datos Bancarios</legend>
+        <br />
+        <label for="pais">País:</label>
+        <input
+          type="text"
+          name="pais"
+          disabled
+          placeholder="ES"
+          id="iban-pais"
+        />&nbsp;&nbsp;(sólo válido ES) <br /><br />
+        <label for="iban">Control IBAN:</label>
+        <input
+          type="text"
+          name="iban"
+          pattern="[0-9]{2}"
+          placeholder="XX"
+          maxlength="2"
+          value=""
+          id="iban-ctrl"
+        />&nbsp;&nbsp;(dos dígitos) <br /><br />
+        <label for="entidad">Entidad:</label>
+        <input
+          type="text"
+          name="entidad"
+          pattern="[0-9]{4}"
+          placeholder="XXXX"
+          value=""
+          id="iban-entidad"
+          maxlength="4"
+        />&nbsp;&nbsp;(cuatro dígitos) <br /><br />
+        <label for="sucursal">Sucursal:</label>
+        <input
+          type="text"
+          name="sucursal"
+          pattern="[0-9]{4}"
+          placeholder="XXXX"
+          value=""
+          maxlength="4"
+          id="iban-sucursal"
+        />&nbsp;&nbsp;(cuatro dígitos) <br /><br />
+        <label for="dc">DC:</label>
+        <input
+          type="text"
+          name="dc"
+          pattern="[0-9]{2}"
+          placeholder="XX"
+          value=""
+          maxlength="2"
+          id="iban-dc"
+        />&nbsp;&nbsp;(dos dígitos) <br /><br />
+        <label for="cuenta">Cuenta: </label>
+        <input
+          type="text"
+          name="cuenta"
+          pattern="[0-9]{10}"
+          placeholder="XXXXXXXXXX"
+          value=""
+          maxlength="10"
+          id="iban-cuenta"
+        />&nbsp;&nbsp;(diez dígitos) <br /><br />
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>Datos Estadísticos - ¿Cómo nos conoció?</legend>
+        <br />
+        <input type="checkbox" name="medio" value="1" checked />A través de la
+        TV
+        <br />
+        <input type="checkbox" name="medio" value="2" />A través de la radio
+        <br />
+        <input type="checkbox" name="medio" value="3" />A través de la Internet
+        <br />
+        <input type="checkbox" name="medio" value="4" />Otros
+        <br />
+        <br />
+        <input type="range" min="1" max="5" id="valoracion" /> Valoración [1-5]
+        <br />
+        <br />
+        Fecha de la Encuesta:
+        <input type="date" value="2019-01-01" id="fecha" /> <br /><br />
+      </fieldset>
+
+      <br />
+
+      <input type="submit" value="Enviar Datos" id="submit" />
+      <input type="reset" value="Borrar Datos" id="reset" />
+
+      <br />
+      <br />
+
+      <div class="show-btns">
+        <input
+          type="button"
+          value="Mostrar Valoracion"
+          onclick="mostrarValoracion()"
+        />
+        <input type="button" value="Mostrar Cuenta" onclick="mostrarCuenta()" />
+        <input
+          type="button"
+          value="Mostrar Dia Semana"
+          onclick="mostrarDiaDeSemana()"
+        />
+      </div>
+    </form>
+
+    <div class="pop-up hidden">
+      <p id="resultado"></p>
+      <button class="pop-up--btn" id="close-btn">ACEPTAR</button>
+    </div>
+
+    <div class="overlay hidden"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  color: blue;
+  text-shadow: 2px 2px yellow;
+  text-align: center;
+}
+
+fieldset {
+  background-color: cyan;
+  border-radius: 10px;
+  border-color: rgb(224, 224, 224);
+}
+
+legend {
+  background-color: red;
+  color: white;
+}
+
+input[type="text"] {
+  background-color: yellow;
+}
+
+.show-btns input {
+  background-color: pink;
+  width: 90px;
+  white-space: normal;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 250%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 0;
+}
+
+.pop-up {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+}
+
+.pop-up p {
+  margin: 30px;
+  text-transform: uppercase;
+}
+
+.pop-up--btn {
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.pop-up--btn:hover {
+  background: none;
+  color: white;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
